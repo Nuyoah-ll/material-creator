@@ -9,15 +9,32 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
   "main": "./out/extension.js",
+  "activationEvents": [
+    "onCommand:createComponent"
+  ],
   "contributes": {
     "commands": [
       {
-        "command": "byte-materials-creator.helloWorld",
-        "title": "Hello World"
+        "command": "createComponent",
+        "title": "Create A React Component..."
       }
-    ]
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "when": "editorFocus",
+          "command": "createComponent",
+          "group": "navigation"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "createComponent",
+          "group": "navigation"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "pnpm run compile",
