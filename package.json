@@ -11,7 +11,7 @@
   ],
   "main": "./out/extension.js",
   "activationEvents": [
-    "onCommand:createComponent"
+    "onStartupFinished"
   ],
   "contributes": {
     "commands": [
@@ -21,17 +21,11 @@
       }
     ],
     "menus": {
-      "editor/context": [
-        {
-          "when": "editorFocus",
-          "command": "createComponent",
-          "group": "navigation"
-        }
-      ],
       "explorer/context": [
         {
           "command": "createComponent",
-          "group": "navigation"
+          "group": "navigation",
+          "when": "explorerResourceIsFolder"
         }
       ]
     }
@@ -45,14 +39,18 @@
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/vscode": "^1.85.0",
+    "@types/ejs": "^3.1.5",
     "@types/mocha": "^10.0.6",
     "@types/node": "18.x",
+    "@types/vscode": "^1.85.0",
     "@typescript-eslint/eslint-plugin": "^6.15.0",
     "@typescript-eslint/parser": "^6.15.0",
-    "eslint": "^8.56.0",
-    "typescript": "^5.3.3",
     "@vscode/test-cli": "^0.0.4",
-    "@vscode/test-electron": "^2.3.8"
+    "@vscode/test-electron": "^2.3.8",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "ejs": "^3.1.9"
   }
 }
