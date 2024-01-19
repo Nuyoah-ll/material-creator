@@ -2,7 +2,7 @@
   "name": "byte-materials-creator",
   "displayName": "byte-materials-creator",
   "description": "extension for quickly creating materials",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "publisher": "nuyoah-ll",
   "engines": {
     "vscode": "^1.85.0"
@@ -39,8 +39,8 @@
     "keybindings": [
       {
         "command": "createPage",
-        "key": "Ctrl+P",
-        "mac": "cmd+P",
+        "key": "Ctrl+1",
+        "mac": "cmd+1",
         "when": "explorerViewletVisible"
       }
     ]

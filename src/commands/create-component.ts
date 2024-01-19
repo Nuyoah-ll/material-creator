@@ -6,7 +6,7 @@ import { toCamelCase } from "../utils/string.utils";
 export const commandOfCreateComponent = vscode.commands.registerCommand("createComponent", async (uri) => {
   // 文件路径
   const filePath = uri.path;
-  const allTypes = ['component', 'modal'];
+  const allTypes = ['component', 'modal', 'drawer'];
   const componentType = await vscode.window.showQuickPick(allTypes, { canPickMany: false });
   const componentName = await vscode.window.showInputBox({
     // 这个对象中所有参数都是可选参数
