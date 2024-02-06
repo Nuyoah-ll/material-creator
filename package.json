@@ -2,7 +2,7 @@
   "name": "byte-materials-creator",
   "displayName": "byte-materials-creator",
   "description": "extension for quickly creating materials",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "publisher": "nuyoah-ll",
   "engines": {
     "vscode": "^1.85.0"
@@ -51,7 +51,9 @@
     "watch": "tsc -watch -p ./",
     "pretest": "pnpm run compile && pnpm run lint",
     "lint": "eslint src --ext ts",
-    "test": "vscode-test"
+    "test": "vscode-test",
+    "clear": "rm -rf ./out",
+    "publish": "npm run clear && npm run compile && vsce publish"
   },
   "devDependencies": {
     "@types/ejs": "^3.1.5",
