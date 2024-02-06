@@ -17,14 +17,10 @@ export const getWorkSpaceRootPath = async () => {
  * 获取插件源码下常用的目录绝对路径
  */
 export const getFrequentlyUsedPath = () => {
-  const root = path.resolve(__dirname, "../../");
-  const src = path.resolve(root, "src");
-  const templates = path.resolve(src, "templates");
+  const templates = path.resolve(__dirname, "../templates");
   const componentTemplates = path.resolve(templates, "components");
   const styleTemplates = path.resolve(templates, "styles");
   return {
-    root,
-    src,
     templates,
     componentTemplates,
     styleTemplates,
