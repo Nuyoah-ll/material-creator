@@ -2,7 +2,6 @@
   "name": "byte-materials-creator",
   "displayName": "byte-materials-creator",
   "description": "extension for quickly creating materials",
-  "extension": "byte-materials-creator",
   "version": "1.0.3",
   "publisher": "nuyoah-ll",
   "engines": {
