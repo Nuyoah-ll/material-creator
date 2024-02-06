@@ -1,0 +1,23 @@
+import React, { useImperativeHandle } from "react";
+
+import styles from "./index.module.scss";
+
+export interface <%= upperCamelCaseComponentName %>Props {
+  // todo
+}
+
+export interface <%= upperCamelCaseComponentName %>Ref {
+  // todo
+}
+
+const <%= upperCamelCaseComponentName %> = React.forwardRef<<%= upperCamelCaseComponentName %>Ref, <%= upperCamelCaseComponentName %>Props>((props, ref) => {
+  console.log(props);
+
+  useImperativeHandle(ref, () => ({
+    // todo
+  }));
+
+  return <div className={styles.<%= lowerCamelCaseComponentName %>}><%= upperCamelCaseComponentName %></div>;
+});
+
+export default <%= upperCamelCaseComponentName %>;

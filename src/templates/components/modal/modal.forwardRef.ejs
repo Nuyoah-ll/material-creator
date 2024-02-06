@@ -1,0 +1,28 @@
+import { Modal, ModalProps } from "@ecom/auxo";
+import React, { useImperativeHandle } from "react";
+
+import styles from "./index.module.scss";
+
+export interface <%= upperCamelCaseComponentName %>Props extends ModalProps {
+  selfDefinedProps?: any; // todo
+}
+
+export interface <%= upperCamelCaseComponentName %>Ref {
+  // todo
+}
+
+const <%= upperCamelCaseComponentName %>: React.FC<<%= upperCamelCaseComponentName %>Props> = React.forwardRef<<%= upperCamelCaseComponentName %>Ref, <%= upperCamelCaseComponentName %>Props>((props, ref) => {
+  const { selfDefinedProps, ...resProps } = props;
+
+  useImperativeHandle(ref, () => ({
+    // todo
+  }));
+
+  return (
+    <Modal className={styles.<%= lowerCamelCaseComponentName %>} {...resProps}>
+      <%= upperCamelCaseComponentName %>
+    </Modal>
+  );
+});
+
+export default <%= upperCamelCaseComponentName %>;

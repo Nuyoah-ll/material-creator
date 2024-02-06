@@ -1,0 +1,14 @@
+import React from "react";
+
+import styles from "./index.module.scss";
+
+export interface <%= upperCamelCaseComponentName %>Props {
+  // todo
+}
+
+const <%= upperCamelCaseComponentName %> = React.memo<<%= upperCamelCaseComponentName %>Props>((props) => {
+  console.log(props);
+  return <div className={styles.<%= lowerCamelCaseComponentName %>}><%= upperCamelCaseComponentName %></div>;
+});
+
+export default <%= upperCamelCaseComponentName %>;

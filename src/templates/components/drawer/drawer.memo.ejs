@@ -1,0 +1,19 @@
+import { Drawer, DrawerProps } from "@ecom/auxo";
+import React from "react";
+
+import styles from "./index.module.scss";
+
+export interface <%= upperCamelCaseComponentName %>Props extends DrawerProps {
+  selfDefinedProps?: any; // todo
+}
+
+const <%= upperCamelCaseComponentName %> = React.memo<<%= upperCamelCaseComponentName %>Props>((props) => {
+  const { selfDefinedProps, ...resProps } = props;
+  return (
+    <Drawer className={styles.<%= lowerCamelCaseComponentName %>} {...resProps}>
+      <%= upperCamelCaseComponentName %>
+    </Drawer>
+  );
+});
+
+export default <%= upperCamelCaseComponentName %>;

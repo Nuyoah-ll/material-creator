@@ -1,0 +1,19 @@
+import { Modal, ModalProps } from "@ecom/auxo";
+import React from "react";
+
+import styles from "./index.module.scss";
+
+export interface <%= upperCamelCaseComponentName %>Props extends ModalProps {
+  selfDefinedProps?: any; // todo
+}
+
+const <%= upperCamelCaseComponentName %>: React.FC<<%= upperCamelCaseComponentName %>Props> = (props) => {
+  const { selfDefinedProps, ...resProps } = props;
+  return (
+    <Modal className={styles.<%= lowerCamelCaseComponentName %>} {...resProps}>
+      <%= upperCamelCaseComponentName %>
+    </Modal>
+  );
+};
+
+export default <%= upperCamelCaseComponentName %>;
