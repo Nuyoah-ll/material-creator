@@ -2,7 +2,7 @@
   "name": "byte-materials-creator",
   "displayName": "byte-materials-creator",
   "description": "extension for quickly creating materials",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "publisher": "nuyoah-ll",
   "engines": {
     "vscode": "^1.85.0"
@@ -23,7 +23,7 @@
       },
       {
         "command": "createPage",
-        "title": "Create A SubApp Page..",
+        "title": "Create A Page/Domain..",
         "category": "MATERIAL CREATOR"
       }
     ],
@@ -31,6 +31,11 @@
       "explorer/context": [
         {
           "command": "createComponent",
+          "group": "navigation",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "createPage",
           "group": "navigation",
           "when": "explorerResourceIsFolder"
         }

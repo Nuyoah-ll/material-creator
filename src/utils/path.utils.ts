@@ -17,13 +17,15 @@ export const getWorkSpaceRootPath = async () => {
  * 获取插件源码下常用的目录绝对路径
  */
 export const getFrequentlyUsedPath = () => {
-  const templates = path.resolve(__dirname, "../templates");
-  const componentTemplates = path.resolve(templates, "components");
-  const styleTemplates = path.resolve(templates, "styles");
+  const templatesPath = path.resolve(__dirname, "../templates");
+  const componentTemplatesPath = path.resolve(templatesPath, "components");
+  const styleTemplatesPath = path.resolve(templatesPath, "styles");
+  const pageTemplatesPath = path.resolve(templatesPath, "pages");
   return {
-    templates,
-    componentTemplates,
-    styleTemplates,
+    templatesPath,
+    componentTemplatesPath,
+    styleTemplatesPath,
+    pageTemplatesPath
   };
 };
 
@@ -32,13 +34,13 @@ export const getFrequentlyUsedPath = () => {
  * @param reactHOCType 组件模板采用的高阶组件类型
  * @param componentType 组件模板的组件类型
  */
-export const getComponentTemplate = (reactHOCType: string, componentType: string) => {
-  return path.resolve(getFrequentlyUsedPath().componentTemplates, componentType, `${componentType}.${reactHOCType}.ejs`);
+export const getComponentTemplate = (reactHOCType = "none", componentType = "common") => {
+  return path.resolve(getFrequentlyUsedPath().componentTemplatesPath, componentType, `${componentType}.${reactHOCType}.ejs`);
 };
 
 /**
  * 获取样式ejs模板的绝对路径，用于ejs api渲染
  */
-export const getStyleTemplate = async () => {
-  return path.resolve(getFrequentlyUsedPath().styleTemplates, "common.ejs");
+export const getStyleTemplate = () => {
+  return path.resolve(getFrequentlyUsedPath().styleTemplatesPath, "common.ejs");
 };

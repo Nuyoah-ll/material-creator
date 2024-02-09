@@ -1,0 +1,23 @@
+import { createHttp } from "@utils/httpV2";
+
+// 创建http实例
+// 情况1：不同平台有不同的请求前缀，在createHttp方法中传入一个对象
+// const http = createHttp({
+//   [Constants.PlatFormTypeEnum.Ecop]: "/test",
+//   [Constants.PlatFormTypeEnum.Logistics]: "/test2",
+// });
+
+// 情况2：不区分请求前缀
+const http = createHttp();
+
+// 请求模板
+// todo 在any处填写请求参数和响应参数
+export function postRequest(params: any) {
+  return http.post<unknown, any>("/postApi", params);
+}
+
+export function getRequest(params: any) {
+  return http.get<unknown, any>("/getApi", {
+    params,
+  });
+}
