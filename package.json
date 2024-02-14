@@ -15,6 +15,17 @@
     "onStartupFinished"
   ],
   "contributes": {
+    "colors": [
+      {
+        "id": "materialCreator.filename.warning",
+        "description": "指定文件或者文件夹命名方式为连字符形式",
+        "defaults": {
+          "dark": "#0099c7",
+          "light": "#0099c7",
+          "highContrast": "#0099c7"
+        }
+      }
+    ],
     "commands": [
       {
         "command": "createComponent",
@@ -43,7 +54,7 @@
     },
     "keybindings": [
       {
-        "command": "createPage",
+        "command": "removeEmptyDir",
         "key": "Ctrl+1",
         "mac": "cmd+1",
         "when": "explorerViewletVisible"
