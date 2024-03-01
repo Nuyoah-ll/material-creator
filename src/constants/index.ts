@@ -6,83 +6,47 @@ export const globalStateKey = {
 
 export const projectName = "logistics-center-partner-subapp";
 
-export const ignoredFileOrDir = [
+// 拼音检查忽略的文件/文件夹
+export const spellCheckIgnoredFileOrDir = [
+  "node_modules",
+  "README.md",
+  "CODEOWNERS",
+  "App.tsx"
+];
+
+// domains文件夹下一些固有的文件/目录，后续新增的需要给出提示
+export const inherentFilesUnderTheDomainsDir = [
+  ".gitkeep",
+  "declaration.d.ts",
+  "package.json",
+  "tsconfig.json",
+  "types.ts",
+  "typings",
   "node_modules",
 ];
 
-// interface DirectoryStructure {
-//   name: string | RegExp;
-//   type: "file" | "dir",
-//   isNecessary?: boolean;
-//   reference?: () => DirectoryStructure[]
-// }
+// 领域下固有的一些文件
+export const inherentFilesUnderSomeDomain = [
+  "config.ts",
+  "types.ts",
+  "api.ts"
+];
 
-// export const commonDir: DirectoryStructure[] = [
-//   {
-//     name: "utils",
-//     type: "file",
-//   },
-//   {
-//     name: "utils",
-//     type: "dir",
-//   },
-//   {
-//     name: "components",
-//     type: "dir",
-//   },
-//   {
-//     name: "static",
-//     type: "dir",
-//   },
-//   {
-//     name: "constants",
-//     type: "dir",
-//   },
-//   {
-//     name: "store",
-//     type: "dir",
-//   },
-//   {
-//     name: "models",
-//     type: "dir",
-//   },
-//   {
-//     name: "hooks",
-//     type: "dir",
-//   }
-// ];
+// 不合法的领域名称
+export const invalidDomainName = [
+  "typings",
+  "typing",
+  "node_modules",
+];
 
-// export const domainDir: DirectoryStructure[] = [
-//   {
-//     name: 'common',
-//     type: "dir",
-//     isNecessary: true,
-//     reference: () => commonDir
-//   },
-//   {
-//     name: "index.tsx",
-//     type: "file",
-//   },
-//   {
-//     name: "index.module.scss",
-//     type: "file",
-//   },
-//   {
-//     name: "columns.tsx",
-//     type: "file",
-//   },
-//   {
-//     name: "api.ts",
-//     type: "file",
-//   },
-//   {
-//     name: "types.ts",
-//     type: "file",
-//   },
-//   {
-//     name: /![A-Z]/,
-//     type: "dir",
-//     isNecessary: false,
-//     reference: () => domainDir
-//   },
-// ];
+export const tipMap: Record<number, string> = {
+  1: '❶',
+  2: '❷',
+  3: '❸',
+  4: '❹',
+  5: '❺',
+  6: '❻',
+  7: '❼',
+  8: '❽',
+  9: '❾',
+};

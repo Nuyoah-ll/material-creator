@@ -45,7 +45,7 @@ function findInvalidRouteConfig(routeContent: string) {
 
 function highlighInvalidRoute(editor: TextEditor, route: string) {
   const underlineDecoration = window.createTextEditorDecorationType({
-    textDecoration: 'red wavy underline'
+    textDecoration: '#ff0000 wavy underline'
   });
   const pathRange = getRange(editor.document, route);
   if (pathRange) {

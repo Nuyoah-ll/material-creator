@@ -18,11 +18,20 @@
     "colors": [
       {
         "id": "materialCreator.filename.warning",
-        "description": "指定文件或者文件夹命名方式为连字符形式",
+        "description": "警告",
         "defaults": {
           "dark": "#0099c7",
           "light": "#0099c7",
           "highContrast": "#0099c7"
+        }
+      },
+      {
+        "id": "materialCreator.filename.error",
+        "description": "错误",
+        "defaults": {
+          "dark": "#ff0000",
+          "light": "#ff0000",
+          "highContrast": "#ff0000"
         }
       },
       {

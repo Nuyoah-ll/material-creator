@@ -2,7 +2,9 @@ import vscode, { FileDecoration, FileDecorationProvider, ThemeColor, Uri } from 
 import { getNoSuffixFilename } from "../utils/string.utils";
 import path from "path";
 import fs from "fs";
-import { ignoredFileOrDir, inherentFilesUnderTheDomainsDir } from "../constants";
+import { spellCheckIgnoredFileOrDir, inherentFilesUnderSomeDomain, inherentFilesUnderTheDomainsDir, tipMap } from "../constants";
+import { isPrimaryDomain, isUnderDomainsDir, isUnderPrimaryDomain } from "../utils/check.utils";
+import { readDirs } from "../utils/file.utils";
 
 export class FileCheckDecorationProvider implements FileDecorationProvider {
   disposables: vscode.Disposable[];
@@ -17,9 +19,12 @@ export class FileCheckDecorationProvider implements FileDecorationProvider {
     const checkFilenameResult = this.checkFilename(uri);
     // 2.检查domain目录下结构是否符合规范
     const checkFileUnderDomainsResult = this.checkFileUnderDomainsDir(uri);
-    const showText = [checkFilenameResult, checkFileUnderDomainsResult].filter(item => item).join("·");
-    if(showText)  {
-      return new FileDecoration("🔵", showText, new ThemeColor("materialCreator.filename.warning"));
+    // 3.检查一级域目录下的结构是否符合规范
+    const checkTheDomainResult = this.checkPrimaryDomain(uri);
+    const tipsArr = [checkFilenameResult, checkFileUnderDomainsResult, checkTheDomainResult].filter(item => item);
+    const showText = tipsArr.join("·");
+    if (showText) {
+      return new FileDecoration(tipMap[tipsArr.length], showText, new ThemeColor("materialCreator.filename.error"));
     }
   }
 
@@ -27,47 +32,47 @@ export class FileCheckDecorationProvider implements FileDecorationProvider {
     this.disposables.forEach((d) => d.dispose());
   }
 
-
+  // 检查文件或者文件夹是否是非连字符形式
   checkFilename(uri: Uri) {
     const filenameErrorText = "文件夹或者文件名称必须为连字符的形式";
     const filename = path.basename(uri.path);
     const noSuffixFilename = getNoSuffixFilename(filename);
-    const isIgnored = ignoredFileOrDir.some(item => uri.path.includes(item));
+    const isIgnored = spellCheckIgnoredFileOrDir.some(item => uri.path.includes(item));
     if (!isIgnored && /[A-Z]/.test(noSuffixFilename)) {
       return filenameErrorText;
     }
   }
 
+  // 检查位于src/domains下的文件/文件夹
   checkFileUnderDomainsDir(uri: Uri) {
-    const fileUnderDomainsErrorText = "未知文件，请@lili添加文件说明";
-    const filename = path.basename(uri.path);
-    const dirname = path.dirname(uri.path);
-    if (dirname.endsWith("/src/domains")) {
-      if(!inherentFilesUnderTheDomainsDir.includes(filename)) {
-        if(!fs.statSync(uri.path).isDirectory()) {
-          return fileUnderDomainsErrorText;
-        }else {
-          // 表示这个是一个一级domain对应的文件夹
-          const dirs = fs.readdirSync(uri.path);
-          if(!dirs.includes("common")) {
-            return "领域下必须包含common文件夹";
-          }
+    const unknownFileUnderDomains = "未知文件，请@lili添加文件说明";
+    if (isUnderDomainsDir(uri.path)) {
+      const filename = path.basename(uri.path);
+      if (!inherentFilesUnderTheDomainsDir.includes(filename)) {
+        if (!fs.statSync(uri.path).isDirectory()) {
+          return unknownFileUnderDomains;
         }
       }
     }
   }
 
-  checkTheDomain(uri: Uri) {
-    const filename = path.basename(uri.path);
-    const dirname = path.dirname(uri.path);
-    if (dirname.endsWith("/src/domains")) {
-      // 表示这个是一个一级domain对应的文件夹
-      if(!inherentFilesUnderTheDomainsDir.includes(filename) && fs.statSync(uri.path).isDirectory()) {
-        const dirs = fs.readdirSync(uri.path);
-        if(!dirs.includes("common")) {
-          return "领域下必须包含common文件夹";
-        }
+  // 检查领域文件夹本身
+  checkPrimaryDomain(uri: Uri) {
+    const lackOfCommonFile = "领域下缺失common文件夹";
+    if (isPrimaryDomain(uri.path)) {
+      const { files, folders } = readDirs(uri.path);
+      // 领域下缺失common文件夹
+      if (!folders.includes("common")) {
+        return lackOfCommonFile;
       }
     }
   }
-}
+
+  // 检查某个领域文件夹下的文件/文件夹
+  checkFileUnderPrimaryDomain(uri: Uri) {
+    if (isUnderPrimaryDomain(uri.path)) {
+      // 当前文件在某个域下
+      // TODO
+    }
+  }
+};
