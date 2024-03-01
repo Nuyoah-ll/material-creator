@@ -2,7 +2,7 @@
   "name": "byte-materials-creator",
   "displayName": "byte-materials-creator",
   "description": "extension for quickly creating materials",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "publisher": "nuyoah-ll",
   "engines": {
     "vscode": "^1.85.0"
