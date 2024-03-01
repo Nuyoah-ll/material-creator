@@ -33,3 +33,19 @@ export const removeEmptyDir = (dirPath: string) => {
       .forEach(subDirName => removeEmptyDir(path.resolve(dirPath, subDirName)));
   }
 };
+
+
+export const readDirs = (dirPath: string) => {
+  if(!fs.statSync(dirPath).isDirectory()){
+    throw new TypeError("只能读取文件夹内容");
+  }
+  const dirs = fs.readdirSync(dirPath);
+  const isFile = (dir: string) => fs.statSync(path.resolve(dirPath, dir)).isFile();
+  const isDirectory = (dir: string) => fs.statSync(path.resolve(dirPath, dir)).isDirectory();
+  const files = dirs.filter(isFile);
+  const folders = dirs.filter(isDirectory);
+  return {
+    files,
+    folders
+  };
+};

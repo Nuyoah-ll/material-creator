@@ -24,6 +24,15 @@
           "light": "#0099c7",
           "highContrast": "#0099c7"
         }
+      },
+      {
+        "id": "materialCreator.filename.test",
+        "description": "测试用颜色",
+        "defaults": {
+          "dark": "#ff6f00",
+          "light": "#ff6f00",
+          "highContrast": "#ff6f00"
+        }
       }
     ],
     "commands": [
@@ -75,6 +84,7 @@
     "@types/ejs": "^3.1.5",
     "@types/mocha": "^10.0.6",
     "@types/node": "18.x",
+    "@types/strip-comments": "^2.0.4",
     "@types/vscode": "^1.85.0",
     "@typescript-eslint/eslint-plugin": "^6.15.0",
     "@typescript-eslint/parser": "^6.15.0",
@@ -84,6 +94,7 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
-    "ejs": "^3.1.9"
+    "ejs": "^3.1.9",
+    "strip-comments": "^2.0.1"
   }
 }
