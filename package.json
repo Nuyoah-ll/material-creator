@@ -2,10 +2,10 @@
   "name": "byte-materials-creator",
   "displayName": "byte-materials-creator",
   "description": "extension for quickly creating materials",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "publisher": "nuyoah-ll",
   "engines": {
-    "vscode": "^1.85.0"
+    "vscode": "^1.75.1"
   },
   "categories": [
     "Other"
@@ -94,7 +94,7 @@
     "@types/mocha": "^10.0.6",
     "@types/node": "18.x",
     "@types/strip-comments": "^2.0.4",
-    "@types/vscode": "^1.85.0",
+    "@types/vscode": "^1.75.1",
     "@typescript-eslint/eslint-plugin": "^6.15.0",
     "@typescript-eslint/parser": "^6.15.0",
     "@vscode/test-cli": "^0.0.4",
